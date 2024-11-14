@@ -56,7 +56,7 @@ public abstract class Pokemon {
 		texte.append("\tje suis de niveau " + this.niveau + "\n");
 		texte.append("\tj'ai " + this.hp + " points de vie\n");
 		texte.append("\tmon attaque de base est de " + this.atk + "\n");
-		texte.append("je suis de type " + this.getType().toString());
+		texte.append("\tje suis de type " + this.getType().toString());
 		return texte.toString();
 	}
 	

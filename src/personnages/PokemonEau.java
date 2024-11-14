@@ -18,10 +18,12 @@ public class PokemonEau extends Pokemon{
 			case FEU:
 				degats = this.getAtk() * 2;
 				this.log("J'attaque " + p.getNom() + " : " + this.getType().toString() + " vs " + this.getType().toString());
+				this.log("C'est très efficace!");
 				break;
 			case EAU, PLANTE:
 				degats = this.getAtk() * 1/2;
 				this.log("J'attaque " + p.getNom() + " : " + this.getType().toString() + " vs " + this.getType().toString());
+				this.log("C'est peu efficace...");
 				break;
 			default:
 				degats = this.getAtk() * 1;
