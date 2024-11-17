@@ -1,8 +1,8 @@
 package histoire;
 
-import personnages.Pokemon0;
-import personnages.PokemonEau;
-import personnages.PokemonFeu;
+import pokemons.Pokemon0;
+import pokemons.PokemonEau;
+import pokemons.PokemonFeu;
 
 public class test {
 

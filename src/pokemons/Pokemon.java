@@ -1,19 +1,22 @@
-package personnages;
+package pokemons;
 import java.util.Random;
 
-public class Pokemon0 {
+public abstract class Pokemon {
 	private String nom;
 	private int niveau;
-	private int hp;
+	protected int hp;
 	private int atk;
+	private static int niveauMax = 10;
+	private TypePokemon type;
 	
 	private static java.util.Random random = new Random();
 	
-	public Pokemon0(String nom) {
+	public Pokemon(String nom, TypePokemon type) {
 		this.nom = nom;
-		this.niveau = random.nextInt(1, 11);
+		this.niveau = random.nextInt(1, niveauMax + 1);
 		this.hp = 2 * niveau;
 		this.atk = (niveau / 2) + 1;
+		this.type = type;
 	}
 	
 	public String getNom() {
@@ -32,6 +35,10 @@ public class Pokemon0 {
 		return this.atk;
 	}
 	
+	public TypePokemon getType() {
+		return this.type;
+	}
+	
 	public boolean isK0() {
 		return (hp == 0);
 	}
@@ -40,13 +47,7 @@ public class Pokemon0 {
 		this.hp = 2 * niveau;
 	}
 	
-	public void attaquer(Pokemon0 p) {
-		if(p.hp - this.atk < 0) {
-			p.hp = 0;
-		} else {
-			p.hp -= this.atk;
-		}
-	}
+	public abstract void attaquer(Pokemon p);
 	
 	@Override
 	public String toString() {
@@ -54,11 +55,18 @@ public class Pokemon0 {
 		texte.append("Je m'appelle " + this.nom + " !\n");
 		texte.append("\tje suis de niveau " + this.niveau + "\n");
 		texte.append("\tj'ai " + this.hp + " points de vie\n");
-		texte.append("\tmon attaque de base est de " + this.atk);
+		texte.append("\tmon attaque de base est de " + this.atk + "\n");
+		texte.append("\tje suis de type " + this.getType().toString());
 		return texte.toString();
 	}
 	
-	public void log(String msg) {
-		System.out.println("[Pokemon " + this.nom + "] : " + msg);
+	private String prefixe() {
+		return "[Pokemon " + this.nom + "]";
 	}
+	
+	public void log(String msg) {
+		System.out.println(this.prefixe() + " : " + msg);
+	}
+	
+	public abstract void subir(Pokemon p);
 }

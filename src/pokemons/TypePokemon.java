@@ -1,4 +1,4 @@
-package personnages;
+package pokemons;
 
 public enum TypePokemon {
 	EAU("Eau"),

@@ -1,9 +1,9 @@
-package personnages;
+package pokemons;
 
-public class PokemonPlante extends Pokemon{
+public class PokemonFeu extends Pokemon{
 
-	public PokemonPlante(String nom) {
-		super(nom, TypePokemon.PLANTE);
+	public PokemonFeu(String nom) {
+		super(nom, TypePokemon.FEU);
 	}
 
 	@Override
@@ -15,12 +15,12 @@ public class PokemonPlante extends Pokemon{
 	public void subir(Pokemon p) {
 		int degats;
 		switch(p.getType()) {
-			case EAU:
+			case PLANTE:
 				degats = this.getAtk() * 2;
 				this.log("J'attaque " + p.getNom() + " : " + this.getType().toString() + " vs " + this.getType().toString());
 				this.log("C'est très efficace!");
 				break;
-			case FEU, PLANTE:
+			case FEU, EAU:
 				degats = this.getAtk() * 1/2;
 				this.log("J'attaque " + p.getNom() + " : " + this.getType().toString() + " vs " + this.getType().toString());
 				this.log("C'est peu efficace...");
@@ -29,13 +29,12 @@ public class PokemonPlante extends Pokemon{
 				degats = this.getAtk() * 1;
 				break;
 		}
-	
+		
 		if(p.getHp() - degats < 0) {
 			p.hp = 0;
 		} else {
 			p.hp -= degats;
 		}
-		
 	}
 
 }

@@ -1,4 +1,4 @@
-package personnages;
+package pokemons;
 
 public class PokemonEau extends Pokemon{
 
