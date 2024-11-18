@@ -6,7 +6,7 @@ import pokemons.Pokemon;
 
 public class Dresseur {
 	private String nom;
-	private int argent;
+	private int argent = 150;
 	private SacADos sacADos;
 	private Equipe equipe;
 	public static int nbDresseurs = 0;
@@ -14,6 +14,7 @@ public class Dresseur {
 	
 	public Dresseur(String nom) {
 		this.nom = nom;
+		this.sacADos = new SacADos(this);
 		this.choixEquipe();
 		nbDresseurs++;
 	}
@@ -67,7 +68,7 @@ public class Dresseur {
 		texte.append("Je m'appelle " + this.nom + "\n");
 		texte.append("\tj'ai" + this.getNbPokemons() + " Pokemons !" + "\n");
 		texte.append("\tj'appartiens à l'équipe " + "\n");
-		texte.append("\tje possède " + this.argent + "\n");
+		texte.append("\tje possède " + this.argent + "$\n");
 		return texte.toString();
 	}
 	

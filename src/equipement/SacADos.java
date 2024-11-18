@@ -14,6 +14,7 @@ public class SacADos {
 	
 	public SacADos(Dresseur dresseur) {
 		this.dresseur = dresseur;
+		this.ball = new Pokeball(dresseur);
 	}
 	
 	public int getNbPokemons() {
@@ -45,17 +46,22 @@ public class SacADos {
 			adversaire.log("Je ne peux pas combattre, pas de pokémons:(");
 		} else {
 			System.out.println("COMBAT !\n\n");
+			this.dresseur.log(adversaire.getNom() + " je te défie en duel!");
 			while(this.dresseur.peutCombatre()) {
 				if(!adversaire.peutCombatre()) {
-					System.out.println(adversaire.getNextPokemon() + "est K0!");
+					this.dresseur.log(adversaire.getNextPokemon().getNom() + " est K0!");
 					System.out.println("Hé hé! Je t'ai battu!");
-					break;
+					return;
 				}
-				this.getNextPokemon().attaquer(adversaire.getNextPokemon());
-				adversaire.getNextPokemon().attaquer(this.getNextPokemon());
+				Pokemon pokemon1 = this.dresseur.getNextPokemon();
+				Pokemon pokemon2 = adversaire.getNextPokemon();
+				while(!pokemon1.isK0() && !pokemon2.isK0()) {
+					pokemon2.attaquer(pokemon1);
+					pokemon1.attaquer(pokemon2);
+				}
 			} 
-			System.out.println(this.dresseur.getNextPokemon() + "est K0!");
-			System.out.println("Hé hé! Je t'ai battu!");
+			adversaire.log(this.getNextPokemon().getNom() + " est K0!");
+			adversaire.log("Hé hé! Je t'ai battu!");
 		}
 	}
 	

@@ -1,5 +1,6 @@
 package histoire;
 
+import personnages.Dresseur;
 import pokemons.Pokemon0;
 import pokemons.PokemonEau;
 import pokemons.PokemonFeu;
@@ -12,6 +13,9 @@ public class test {
 		
 		System.out.println("\nTEST POKEMON TYPES \n");
 		testPokemonTypes();
+		
+		System.out.println("\nTEST DRESSEUR \n");
+		testDresseur();
 
 	}
 	
@@ -34,6 +38,16 @@ public class test {
 		feu.attaquer(eau);
 		eau.log(eau.toString());
 		feu.log(feu.toString());
+	}
+	
+	private static void testDresseur() {
+		Dresseur dresseur1 = new Dresseur("Red");
+		Dresseur dresseur2 = new Dresseur("Blue");
+		dresseur1.log(dresseur1.toString());
+		dresseur1.capturerPokemons();
+		dresseur2.log(dresseur2.toString());
+		dresseur2.capturerPokemons();
+		dresseur1.combattre(dresseur2);
 	}
 
 }
