@@ -4,7 +4,7 @@ import java.util.Random;
 public abstract class Pokemon {
 	private String nom;
 	private int niveau;
-	protected int hp;
+	private int hp;
 	private int atk;
 	private static int niveauMax = 10;
 	private TypePokemon type;
@@ -13,10 +13,14 @@ public abstract class Pokemon {
 	
 	public Pokemon(String nom, TypePokemon type) {
 		this.nom = nom;
-		this.niveau = random.nextInt(1, niveauMax + 1);
+		this.initNiveau(random.nextInt(1, niveauMax + 1));
+		this.type = type;
+	}
+	
+	protected void initNiveau(int niveau) {
+		this.niveau = niveau;
 		this.hp = 2 * niveau;
 		this.atk = (niveau / 2) + 1;
-		this.type = type;
 	}
 	
 	public String getNom() {
@@ -45,6 +49,14 @@ public abstract class Pokemon {
 	
 	public void soigner() {
 		this.hp = 2 * niveau;
+	}
+	
+	protected void perdreVie(int dommages) {
+		if(hp - dommages < 0) {
+			hp = 0;
+		} else {
+			hp -= dommages;
+		}
 	}
 	
 	public abstract void attaquer(Pokemon p);

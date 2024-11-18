@@ -29,12 +29,7 @@ public class PokemonEau extends Pokemon{
 				degats = this.getAtk() * 1;
 				break;
 		}
-		
-		if(p.getHp() - degats < 0) {
-			p.hp = 0;
-		} else {
-			p.hp -= degats;
-		}
+		this.perdreVie(degats);
 		
 	}
 
